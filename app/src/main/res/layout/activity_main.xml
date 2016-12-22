@@ -1,0 +1,68 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="employee"
+            type="com.haocai.demo.Employee"/>
+
+        <variable
+            name="presenter"
+            type="com.haocai.demo.MainActivity.Presenter"/>
+
+
+    </data>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.haocai.demo.MainActivity">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:textColor="#ffffff"
+            android:background="#de3131"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@{employee.name}"
+           />
+
+        <TextView
+            android:id="@+id/tv_age"
+            android:textColor="#ffffff"
+            android:background="#8d8686"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text= "@{String.valueOf(employee.age)}"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+          />
+
+        <EditText
+            android:id="@+id/et_age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onTextChanged="@{presenter.onTextChanged}"
+            android:inputType="number"
+            android:maxLength="3"
+            android:hint="请输入 年龄"
+            />
+        <Button
+            android:id="@+id/bt"
+            android:onClick="@{presenter.onClick}"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/bt2"
+            android:onClick="@{() -> presenter.onClickListenerBinding(employee)}"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="employee 回传"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</layout>
